@@ -1,23 +1,42 @@
 package com.davidmoreno.jetpackdemo.modules.login.view
 
 import android.graphics.drawable.AnimationDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.davidmoreno.jetpackdemo.R
+import com.davidmoreno.jetpackdemo.modules.login.viewmodel.LoginViewModel
+import com.davidmoreno.jetpackdemo.util.InjectorUtils
+import com.davidmoreno.jetpackdemo.util.base.BaseActivity
 import com.davidmoreno.spacenotes.common.startWithFade
 import com.davidmoreno.spacenotes.common.userStartWithFade
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
+
+    private val viewModel: LoginViewModel by viewModels {
+        InjectorUtils.provideLoginViewModelFactory(applicationContext)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         startAnimation()
+        initView()
     }
 
     private fun startAnimation() {
         (loginActivityRootLayout.background as AnimationDrawable).startWithFade()
         (loginActivityUserIV.background as AnimationDrawable).userStartWithFade()
+    }
+
+    private fun initView(){
+        loginActivityLoginButton.setOnClickListener { showLoadingDialog() }
+    }
+
+    private fun initViewModel(){
+        viewModel.loginStatus.observe(viewLifecycleOwner) { result ->
+            binding.hasPlantings = !result.isNullOrEmpty()
+            adapter.submitList(result)
+        }
     }
 }

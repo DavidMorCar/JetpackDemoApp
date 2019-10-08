@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginFragmentRootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_loop"
+    tools:context=".modules.login.view.LoginFragment">
+
+    <ImageView
+        android:id="@+id/loginFragmentLogoIV"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/application_logo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/jetpack_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/loginFragmentContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_space"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/loginActivityLogoIV">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_round_top_black"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/border_round_top"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/default_space"
+                    android:contentDescription="@string/email_field_icon"
+                    android:src="@drawable/ic_email_white" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+
+            <EditText
+                android:id="@+id/loginFragmentEmailET"
+                style="@style/StyleEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="6"
+                android:hint="@string/email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/border_round_bottom_black"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/border_round_bottom"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/default_space"
+                    android:contentDescription="@string/password_field_icon"
+                    android:src="@drawable/ic_lock_white" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+
+            <EditText
+                android:id="@+id/loginFragmentPasswordET"
+                style="@style/StyleEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="6"
+                android:hint="@string/password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/loginFragmentRestoreTV"
+        style="@style/StyleFunctionalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_space"
+        android:text="@string/restore_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginActivityOrLayout" />
+
+    <Button
+        android:id="@+id/loginFragmentLoginButton"
+        style="@style/StyleFunctionalButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_space"
+        android:layout_marginLeft="@dimen/default_space"
+        android:layout_marginTop="@dimen/default_space_double"
+        android:layout_marginEnd="@dimen/default_space_half"
+        android:layout_marginRight="@dimen/default_space_half"
+        android:text="@string/login"
+        app:layout_constraintEnd_toStartOf="@id/loginActivityRegisterButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginActivityContentLayout" />
+
+
+    <Button
+        android:id="@+id/loginFragmentRegisterButton"
+        style="@style/StyleFunctionalButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_space_half"
+        android:layout_marginLeft="@dimen/default_space_half"
+        android:layout_marginTop="@dimen/default_space_double"
+        android:layout_marginEnd="@dimen/default_space"
+        android:layout_marginRight="@dimen/default_space"
+        android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/loginActivityLoginButton"
+        app:layout_constraintTop_toBottomOf="@id/loginActivityContentLayout" />
+
+    <TextView
+        android:id="@+id/loginFragmentOrLayout"
+        style="@style/StyleFunctionalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_space_double"
+        android:text="@string/or"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginActivityRegisterButton" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_margin="@dimen/default_space"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/loginActivityOrLayout"
+        app:layout_constraintEnd_toStartOf="@id/loginActivityOrLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/loginActivityOrLayout" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_margin="@dimen/default_space"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/loginActivityOrLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/loginActivityOrLayout"
+        app:layout_constraintTop_toTopOf="@id/loginActivityOrLayout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_space_half"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginActivityLogoIV"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/loginFragmentUserIV"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/user_loop"
+            android:contentDescription="@string/creator_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/default_space_half"
+            android:layout_marginLeft="@dimen/default_space_half"
+            android:text="@string/owner"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/default_text_size_small"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginActivityRegisterButton" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
