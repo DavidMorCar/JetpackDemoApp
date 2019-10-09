@@ -13,30 +13,10 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity() {
 
-    private val viewModel: LoginViewModel by viewModels {
-        InjectorUtils.provideLoginViewModelFactory(applicationContext)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        startAnimation()
-        initView()
     }
 
-    private fun startAnimation() {
-        (loginActivityRootLayout.background as AnimationDrawable).startWithFade()
-        (loginActivityUserIV.background as AnimationDrawable).userStartWithFade()
-    }
 
-    private fun initView(){
-        loginActivityLoginButton.setOnClickListener { showLoadingDialog() }
-    }
-
-    private fun initViewModel(){
-        viewModel.loginStatus.observe(viewLifecycleOwner) { result ->
-            binding.hasPlantings = !result.isNullOrEmpty()
-            adapter.submitList(result)
-        }
-    }
 }
