@@ -9,13 +9,9 @@
     tools:context=".modules.login.view.LoginActivity">
 
     <FrameLayout
+        android:id="@+id/loginActivityContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <fragment
-            android:id="@+id/loginFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </FrameLayout>
 
