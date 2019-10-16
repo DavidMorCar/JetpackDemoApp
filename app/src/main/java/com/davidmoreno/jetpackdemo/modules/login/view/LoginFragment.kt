@@ -4,22 +4,19 @@ package com.davidmoreno.jetpackdemo.modules.login.view
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-
+import androidx.lifecycle.observe
+import com.davidmoreno.jetpackdemo.R
 import com.davidmoreno.jetpackdemo.modules.login.viewmodel.LoginViewModel
+import com.davidmoreno.jetpackdemo.util.DELAY
 import com.davidmoreno.jetpackdemo.util.InjectorUtils
+import com.davidmoreno.jetpackdemo.util.base.BaseFragment
 import com.davidmoreno.spacenotes.common.startWithFade
 import com.davidmoreno.spacenotes.common.userStartWithFade
 import kotlinx.android.synthetic.main.fragment_login.*
-
-import androidx.lifecycle.observe
-import com.davidmoreno.jetpackdemo.R
-import com.davidmoreno.jetpackdemo.util.DELAY
-import com.davidmoreno.jetpackdemo.util.base.BaseFragment
 
 class LoginFragment : BaseFragment() {
 
@@ -28,7 +25,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private val viewModel: LoginViewModel by viewModels {
-        InjectorUtils.provideLoginViewModelFactory(activity!!)
+        InjectorUtils.provideLoginViewModelFactory()
     }
 
     override fun onCreateView(
