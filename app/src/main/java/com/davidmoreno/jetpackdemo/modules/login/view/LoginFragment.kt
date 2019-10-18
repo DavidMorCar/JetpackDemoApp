@@ -11,14 +11,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.davidmoreno.jetpackdemo.R
 import com.davidmoreno.jetpackdemo.modules.login.viewmodel.LoginViewModel
-import com.davidmoreno.jetpackdemo.util.DELAY
 import com.davidmoreno.jetpackdemo.util.InjectorUtils
+import com.davidmoreno.jetpackdemo.util.LOGIN_RECOVERY_FRAGMENT_TAG
 import com.davidmoreno.jetpackdemo.util.base.BaseFragment
 import com.davidmoreno.spacenotes.common.startWithFade
 import com.davidmoreno.spacenotes.common.userStartWithFade
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment() {
+
+    private val recoveryFragment = LoginRecoveryFragment()
 
     companion object {
         fun newInstance() = LoginFragment()
@@ -48,16 +50,46 @@ class LoginFragment : BaseFragment() {
         (loginFragmentUserIV.background as AnimationDrawable).userStartWithFade()
     }
 
-    private fun initView(){
+    private fun initView() {
         loginFragmentLoginButton.setOnClickListener {
-            viewModel.checkUserLogin(loginFragmentEmailET.text.toString(),
-                loginFragmentPasswordET.text.toString())
-            showLoadingDialog() }
+            viewModel.checkUserLogin(
+                loginFragmentEmailET.text.toString(),
+                loginFragmentPasswordET.text.toString()
+            )
+            showLoadingDialog()
+        }
+        loginFragmentRestoreTV.setOnClickListener {
+            showRecoveryFragment()
+        }
     }
 
-    private fun initViewModel(){
+    private fun initViewModel() {
         viewModel.loginStatus.observe(viewLifecycleOwner) { result ->
-            delayHandler.postDelayed({hideLoadingDialog()}, DELAY)
+            hideLoadingDialog()
             Log.e("Result:", result.toString())
         }
-    }}
+    }
+
+    private fun showRecoveryFragment() {
+        val fragment =
+            activity?.supportFragmentManager?.findFragmentByTag(LOGIN_RECOVERY_FRAGMENT_TAG)
+
+        val loginRecoveryFragment: LoginRecoveryFragment
+
+        loginRecoveryFragment = if (fragment == null)
+            LoginRecoveryFragment()
+        else {
+            fragment as LoginRecoveryFragment
+        }
+
+        if (loginRecoveryFragment.dialog != null && loginRecoveryFragment.dialog!!.isShowing) {
+            loginRecoveryFragment.isCancelable = true
+        } else {
+            loginRecoveryFragment.isCancelable = true
+            activity?.supportFragmentManager?.let {
+                loginRecoveryFragment.show(it, LOGIN_RECOVERY_FRAGMENT_TAG)
+            }
+        }
+    }
+
+}

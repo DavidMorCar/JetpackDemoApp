@@ -1,7 +1,8 @@
 package com.davidmoreno.jetpackdemo.util
 
-val LOADING_FRAGMENT_TAG = "LOADING_FRAGMENT"
 val DELAY: Long = 5000
 
-//ViewModels identifiers
-val LOGIN_VIEWMODEL_TAG = 1
+//Fragments identifiers
+val LOGIN_RECOVERY_FRAGMENT_TAG = "LOGIN_RECOVERY_FRAGMENT_TAG"
+val LOGIN_FRAGMENT_TAG = "LOGIN_FRAGMENT_TAG"
+val LOADING_FRAGMENT_TAG = "LOADING_FRAGMENT"

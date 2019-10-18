@@ -134,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@id/loginFragmentOrLayout" />
 
     <Button
-        android:id="@+id/loginFragmentLoginButton"
+        android:id="@+id/loginFragmentRegisterButton"
         style="@style/StyleFunctionalButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -144,13 +144,13 @@
         android:layout_marginEnd="@dimen/default_space_half"
         android:layout_marginRight="@dimen/default_space_half"
         android:text="@string/login"
-        app:layout_constraintEnd_toStartOf="@id/loginFragmentRegisterButton"
+        app:layout_constraintEnd_toStartOf="@id/loginFragmentLoginButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginFragmentContentLayout" />
 
 
     <Button
-        android:id="@+id/loginFragmentRegisterButton"
+        android:id="@+id/loginFragmentLoginButton"
         style="@style/StyleFunctionalButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
         android:layout_marginRight="@dimen/default_space"
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/loginFragmentLoginButton"
+        app:layout_constraintStart_toEndOf="@id/loginFragmentRegisterButton"
         app:layout_constraintTop_toBottomOf="@id/loginFragmentContentLayout" />
 
     <TextView
