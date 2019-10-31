@@ -30,3 +30,4 @@ Model
 
 Building instructions
 - If any error or problem appears, you must clean and rebuild the project
+- The project is still under development
